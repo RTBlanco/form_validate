@@ -1,0 +1,56 @@
+*{
+  margin: 0;
+}
+
+#container {
+  border: 2px dotted black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 99vh;
+  background: linear-gradient(to bottom, #33ccff 0%, #3e4bb1 100%)
+}
+
+#form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(208, 230, 230, 0.8);
+  border-radius: 30px;
+  width: 40vh;
+  height: 40vh;
+  /* animation: shake 0.3s; */
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 50%;
+  width: 80%;
+}
+
+form input {
+  border-radius: 8px;
+  border: none;
+  height: 30px;
+  margin-bottom: 3%;
+}
+
+
+
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  25%{
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
