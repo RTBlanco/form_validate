@@ -7,7 +7,8 @@ from form_validate.models.user import User
 @app.route('/', methods=["POST", "GET"])
 # @login_required
 def index():
-  print(request)
+  print(request.json)
+  print(dict(request.json)["username"])
   return "<h1>test</h1>"
 
 
