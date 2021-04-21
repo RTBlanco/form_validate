@@ -23,3 +23,22 @@ function validLogin(username, password) {
     setTimeout(()=> formDiv.style.animation = 'none',300)
   }
 }
+
+
+
+function look(username, password) {
+  return fetch('http://localhost:5000',{
+    method: "POST",
+    headers: {
+        "content-type" : "application/json",
+        "Accept" : "application/json"
+    },
+    body : JSON.stringify({
+        username,
+        password
+    })
+  })
+  .then(resp => resp.json())
+  .then(resp => resp)
+  
+}
