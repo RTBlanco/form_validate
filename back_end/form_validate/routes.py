@@ -1,5 +1,9 @@
-from form_validate import app
+from form_validate import app, db
+from flask import session, request
+
+app.secret_key = "testing"
 
 @app.route('/')
-def home():
+def index():
   return "<h1>test</h1>"
+
