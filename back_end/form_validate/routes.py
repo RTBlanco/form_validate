@@ -1,5 +1,5 @@
 from form_validate import app, db
-from flask import session, request
+from flask import session, request, jsonify
 from form_validate.models.user import User
 # from flask_login import current_user, login_required, logout_user
 
@@ -9,7 +9,16 @@ from form_validate.models.user import User
 def index():
   print(request.json)
   print(dict(request.json)["username"])
-  return "<h1>test</h1>"
+  username = dict(request.json)["username"]
+  user = User.query.filter(User.username == username).first()
+  print(user == None)
+  if user == None:
+    return {"error": "could not find user"}
+  else:
+    return {
+      "did_it_work": "yes"
+    }
+
 
 
 @app.route('/login', methods=["POST", "GET"])
