@@ -1,20 +1,23 @@
 from form_validate import app, db
 from flask import json, session, request, jsonify, Response
 from form_validate.models.user import User
+from flask_cors import cross_origin
 # from flask_login import current_user, login_required, logout_user
 
 
 @app.route('/', methods=["POST", "GET"])
-# @login_required
+@cross_origin()
 def index():
+  print('test')
   print(request.json)
   print(dict(request.json)["username"])
   username = dict(request.json)["username"]
   # user = User.query.filter(User.username == username).first()
   user = User.find_by_username(username)
+  # user = None
   print(user == None)
   if user == None:
-    # return jsonify({"error": "could not find user"}), 401
+    return jsonify({"error": "could not find user"}), 422
     # return Response({"error": "could not find user"}, status=401, mimetype='application/json')#jsonify({"error": "could not find user"}), 401
   else:
     return jsonify(id=user.id, username=user.username, password=user.password)
