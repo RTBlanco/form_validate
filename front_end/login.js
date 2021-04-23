@@ -32,10 +32,9 @@ function validate(obj) {
     // window.location.reload();
     obj.json().then( obj => {
       const {id, username} = obj
-      localStorage.setItem('id',id)
-      localStorage.setItem('username', username)
+      sessionStorage.setItem('id',id)
+      sessionStorage.setItem('username', username)
     })
-    // console.log(id)
     location.href = "./index.html"
   } else {
     username.value = ''
