@@ -27,10 +27,10 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 function validate(obj) {
   const formDiv = document.getElementById("form")
-  // obj.status
   if (obj.status === 200){
-    window.alert("you are logged in !")
-    window.location.reload();
+    // window.alert("you are logged in !")
+    // window.location.reload();
+    location.href = "./index.html"
   } else {
     username.value = ''
     password.value = ''
