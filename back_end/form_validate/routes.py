@@ -11,27 +11,28 @@ def index():
   print('test')
   print(request.json)
   print(dict(request.json)["username"])
+  print(dict(request.json)["password"])
   username = dict(request.json)["username"]
-  # user = User.query.filter(User.username == username).first()
   user = User.find_by_username(username)
-  # user = None
+  print(user)
   print(user == None)
-  if user == None:
+  if user != None and user.password == request.json["password"]:
+    return jsonify(id=user.id, username=user.username, password=user.password)
+  else:
     return jsonify({"error": "could not find user"}), 422
     # return Response({"error": "could not find user"}, status=401, mimetype='application/json')#jsonify({"error": "could not find user"}), 401
-  else:
-    return jsonify(id=user.id, username=user.username, password=user.password)
 
 
 @app.route('/login', methods=["POST", "GET"])
 def login():
+  # TODO: Save the user id in the front end local storage of cache 
   if request.method == 'POST':
     username = dict(request.json)["username"]
     password = dict(request.json)["password"]
 
     user = User.find_by_username(username)
     if user != None and user.password == password:
-      session['username'] = username
+      # session['username'] = username
       return jsonify(id=user.id, username=user.username)
     else:
       return jsonify({"error": "incorrect login"}), 401
