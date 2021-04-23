@@ -24,15 +24,13 @@ def index():
 
 
 @app.route('/login', methods=["POST", "GET"])
-def login():
-  # TODO: Save the user id in the front end local storage of cache 
+def login(): 
   if request.method == 'POST':
     username = dict(request.json)["username"]
     password = dict(request.json)["password"]
 
     user = User.find_by_username(username)
     if user != None and user.password == password:
-      # session['username'] = username
       return jsonify(id=user.id, username=user.username)
     else:
       return jsonify({"error": "incorrect login"}), 401
