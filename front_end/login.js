@@ -5,31 +5,14 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
   loginForm.addEventListener("submit", (e)=>{
     e.preventDefault();
-    // validLogin(username, password);
     look(username.value, password.value);
   })
 })
 
-// function validLogin(username, password) {
-//   const formDiv = document.getElementById("form")
-//   if (username.value === "ronny" && password.value === "testing"){
-//     window.alert("you are logged in !")
-//     window.location.reload();
-//   } else {
-//     username.value = ''
-//     password.value = ''
-//     username.style.border = "1px solid red"
-//     password.style.border = "1px solid red"
-//     formDiv.style.animation = 'shake 0.3s';
-//     setTimeout(()=> formDiv.style.animation = 'none',300)
-//   }
-// }
 
 function validate(obj) {
-  const formDiv = document.getElementById("form")
+  const formDiv = document.getElementById("form");
   if (obj.status === 200){
-    // window.alert("you are logged in !")
-    // window.location.reload();
     obj.json().then( obj => {
       const {id, username} = obj
       sessionStorage.setItem('id',id)
