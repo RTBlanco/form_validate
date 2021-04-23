@@ -14,3 +14,6 @@ class User(db.Model):
   def find_by_username(self, username):
     """ This locates the user by usernamee """
     return User.query.filter(User.username == username).first()
+
+  def __repr__(self):
+    return "User :{ username: " + self.username + ", password: " + self.password + "}" 
