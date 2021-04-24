@@ -6,7 +6,7 @@ from flask_cors import CORS
 # from flask_bcrypt import Bcrypt
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db/test.db'
 app.secret_key = "testing"
 CORS(app)
 db = SQLAlchemy(app)
