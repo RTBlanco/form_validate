@@ -18,11 +18,20 @@ function changeToSignUp() {
     // Changes the text mid way durring the animation
     sessionName.classList.add('transform')
     sessionBtn.classList.add('transform')
-    setTimeout(()=> {
-      sessionName.innerText = "Sign Up"
-      sessionBtn.innerText = "Login"      
-    }, 500)
 
+
+    if (sessionBtn.innerText === "Sign Up") {
+      setTimeout(()=> {
+        sessionName.innerText = "Sign Up"
+        sessionBtn.innerText = "Login"      
+      }, 500)
+    } else {
+      setTimeout(()=> {
+        sessionName.innerText = "Login"
+        sessionBtn.innerText = "Sign Up"      
+      }, 500)
+    }
+     
     // Removes that class so that when the event triggers again it will be added again 
     setTimeout(()=>{
       sessionName.classList.remove('transform')
