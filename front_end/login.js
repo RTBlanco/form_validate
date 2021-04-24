@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", ()=>{
   changeToSignUp();
 })
 
+function addNameInput(){
+  const name = document.getElementById('name')
+  name.classList.add('open')
+};
+
 function changeToSignUp() {
   const sessionBtn = document.getElementById('session')
   const sessionName = document.getElementById('session-name')
@@ -23,7 +28,8 @@ function changeToSignUp() {
     if (sessionBtn.innerText === "Sign Up") {
       setTimeout(()=> {
         sessionName.innerText = "Sign Up"
-        sessionBtn.innerText = "Login"      
+        sessionBtn.innerText = "Login"
+        addNameInput();      
       }, 500)
     } else {
       setTimeout(()=> {
@@ -44,9 +50,10 @@ function validate(obj) {
   const formDiv = document.getElementById("form");
   if (obj.status === 200){
     obj.json().then( obj => {
-      const {id, username} = obj
+      const {id, username, name} = obj
       sessionStorage.setItem('id',id)
       sessionStorage.setItem('username', username)
+      sessionStorage.setItem('name', name)
     })
     location.href = "./index.html"
   } else {
