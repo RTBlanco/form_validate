@@ -7,8 +7,29 @@ document.addEventListener("DOMContentLoaded", ()=>{
     e.preventDefault();
     look(username.value, password.value);
   })
+  changeToSignUp();
 })
 
+function changeToSignUp() {
+  const sessionBtn = document.getElementById('session')
+  const sessionName = document.getElementById('session-name')
+  sessionBtn.addEventListener('click', (e)=>{
+    console.log(e)
+    // Changes the text mid way durring the animation
+    sessionName.classList.add('transform')
+    sessionBtn.classList.add('transform')
+    setTimeout(()=> {
+      sessionName.innerText = "Sign Up"
+      sessionBtn.innerText = "Login"      
+    }, 500)
+
+    // Removes that class so that when the event triggers again it will be added again 
+    setTimeout(()=>{
+      sessionName.classList.remove('transform')
+      sessionBtn.classList.remove('transform')
+    },1000)
+  })
+}
 
 function validate(obj) {
   const formDiv = document.getElementById("form");
