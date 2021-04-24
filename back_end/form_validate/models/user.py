@@ -7,6 +7,7 @@ from form_validate import db
 
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
+  name = db.Column(db.String(80), unique=False, nullable=False)
   username = db.Column(db.String(80), unique=True, nullable=False)
   password = db.Column(db.String(120), unique=False, nullable=False)
 
@@ -16,4 +17,4 @@ class User(db.Model):
     return User.query.filter(User.username == username).first()
 
   def __repr__(self):
-    return "User :{ username: " + self.username + ", password: " + self.password + "}" 
+    return "User :{name: " + self.name + " username: " + self.username + ", password: " + self.password + "}" 

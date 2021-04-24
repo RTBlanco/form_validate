@@ -31,7 +31,7 @@ def login():
 
     user = User.find_by_username(username)
     if user != None and user.password == password:
-      return jsonify(id=user.id, username=user.username)
+      return jsonify(id=user.id, username=user.username, name=user.name)
     else:
       return jsonify({"error": "incorrect login"}), 401
 
