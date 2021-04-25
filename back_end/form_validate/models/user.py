@@ -35,8 +35,5 @@ class User(db.Model):
     return name 
 
 
-  def create(self, username, name, password):
-    pass 
-
   def __repr__(self):
     return "User :{name: " + self.name + " username: " + self.username + ", password: " + self.password + "}" 
