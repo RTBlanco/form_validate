@@ -3,7 +3,7 @@ if (sessionStorage.getItem('id')) {
     const username = document.getElementById("username");
     const id = document.getElementById('id');
     const logoutBtn = document.querySelector('button')
-    const name = document.getElementById('name')
+    const name = document.getElementById('user-name')
   
     username.innerText += " " + sessionStorage.getItem('username');
     id.innerText += " " + sessionStorage.getItem('id');
