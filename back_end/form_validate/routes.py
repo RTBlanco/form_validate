@@ -36,6 +36,15 @@ def login():
       return jsonify({"error": "incorrect login"}), 401
 
 
+@app.route('/new', methods=["POST","GET"])
+def new():
+  if request.method == "POST":
+    username = dict(request.json)["username"]
+    password = dict(request.json)["password"]
+    name = dict(request.json)["name"]
+
+    user = User.create(username=username, name=name, password=password)
+
 
 @app.route('/logout')
 def logout():

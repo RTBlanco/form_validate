@@ -16,5 +16,33 @@ class User(db.Model):
     """ This locates the user by usernamee """
     return User.query.filter(User.username == username).first()
 
+  @db.validates('username')
+  def validate_username(self, key, username):
+    if not username:
+      raise AssertionError('No username provided')
+
+    if User.query.filter(User.username == username).first():
+      raise AssertionError('Username is already in use')
+
+    return username
+
+  @db.validates('password')
+  def vaidate_password(self, key, password):
+    if not password:
+      raise AssertionError('No username provided')
+
+    return password
+
+  @db.validates('name')
+  def vaidate_name(self, key, name):
+    print(name)
+    if not name:
+      raise AssertionError('No username provided')
+    return name 
+
+
+  def create(self, username, name, password):
+    pass 
+
   def __repr__(self):
     return "User :{name: " + self.name + " username: " + self.username + ", password: " + self.password + "}" 
