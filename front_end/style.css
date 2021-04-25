@@ -49,7 +49,7 @@ form input {
 }
 
 #name {
-  /* display: none; */
+  
   height: 0px;
   opacity: 0;
 }
@@ -63,15 +63,6 @@ form input {
   animation: shrink 1s;
   animation-fill-mode: forwards;
 }
-/* @keyframes fade {
-  from {opacity: 0;}
-  to {opacity: 1;}
-} */
-/* #username {
-  position: relative;
-  animation: move-up 1s;
-  animation-fill-mode: forwards;
-}*/
 
 
 #form-btn {

@@ -2,10 +2,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const loginForm = document.getElementById("login");
   const username = document.getElementById("username")
   const password = document.getElementById("password")
+  const name = document.getElementById('name')
 
   loginForm.addEventListener("submit", (e)=>{
     e.preventDefault();
-    look(username.value, password.value);
+    const sessionName = document.getElementById('session-name')
+    if (sessionName.innerText === "Login"){
+      look(username.value, password.value);
+    } else {
+      create(username, name, password);
+    }
   })
   changeToSignUp();
 })
@@ -57,7 +63,7 @@ function changeToSignUp() {
   })
 }
 
-function validate(obj) {
+function validateLogin(obj) {
   const formDiv = document.getElementById("form");
   if (obj.status === 200){
     obj.json().then( obj => {
@@ -77,6 +83,10 @@ function validate(obj) {
   }
 }
 
+function validateSignIn(obj) {
+
+}
+
 function look(username, password) {
   return fetch('http://localhost:5000/login',{
     method: "POST",
@@ -88,6 +98,23 @@ function look(username, password) {
     body: JSON.stringify({
       username,
       password
+    })
+  })
+  .then(resp => validateLogin(resp))
+}
+
+function create(username, name, password) {
+  return fetch('http://localhost:5000/new',{
+    method: "POST",
+    mode: "cors",
+    headers: {
+      "content-type" : "application/json",
+      "Accept" : "application/json"
+    },
+    body: JSON.stringify({
+      username,
+      password,
+      name
     })
   })
   .then(resp => validate(resp))
