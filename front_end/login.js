@@ -12,7 +12,16 @@ document.addEventListener("DOMContentLoaded", ()=>{
 
 function addNameInput(){
   const name = document.getElementById('name')
+  if (name.classList.contains('close')) {
+    name.classList.remove('close')
+  }
   name.classList.add('open')
+};
+
+function removeNameInput() {
+  const name = document.getElementById('name')
+  name.classList.remove('open')
+  name.classList.add('close')
 };
 
 function changeToSignUp() {
@@ -31,11 +40,13 @@ function changeToSignUp() {
         sessionBtn.innerText = "Login"
         addNameInput();      
       }, 500)
+      addNameInput();
     } else {
       setTimeout(()=> {
         sessionName.innerText = "Login"
         sessionBtn.innerText = "Sign Up"      
       }, 500)
+      removeNameInput();
     }
      
     // Removes that class so that when the event triggers again it will be added again 

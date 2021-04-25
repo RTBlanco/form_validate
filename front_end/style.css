@@ -58,6 +58,11 @@ form input {
   animation: grow 1s;
   animation-fill-mode: forwards;
 }
+
+.close {
+  animation: shrink 1s;
+  animation-fill-mode: forwards;
+}
 /* @keyframes fade {
   from {opacity: 0;}
   to {opacity: 1;}
@@ -72,6 +77,17 @@ form input {
 #form-btn {
   margin-top: 10px;
 }
+
+@keyframes shrink {
+  0% {
+    height: 30px;
+    opacity: 1;
+  }
+  100% {
+    height: 0px;
+    opacity: 0;
+  }
+} 
 
 @keyframes grow {
   0% {
