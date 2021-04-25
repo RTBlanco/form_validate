@@ -43,7 +43,13 @@ def new():
     password = dict(request.json)["password"]
     name = dict(request.json)["name"]
 
-    user = User.create(username=username, name=name, password=password)
+    try:
+      user = User(username=username, name=name, password=password)
+      db.session.add(user)
+      db.session.commit()
+      return jsonify(id=user.id, username=user.username, name=user.name)
+    except AssertionError as error:
+      return jsonify(error=f'{error}'), 400
 
 
 @app.route('/logout')
