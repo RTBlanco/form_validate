@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
     if (sessionName.innerText === "Login"){
       look(username.value, password.value);
     } else {
-      create(username, name, password);
+      create(username.value, name.value, password.value);
     }
   })
   changeToSignUp();
@@ -117,5 +117,5 @@ function create(username, name, password) {
       name
     })
   })
-  .then(resp => validate(resp))
+  .then(resp => validateLogin(resp))
 }
