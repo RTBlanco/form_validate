@@ -2,7 +2,6 @@ from form_validate import app, db
 from flask import json, session, request, jsonify, Response
 from form_validate.models.user import User
 from flask_cors import cross_origin
-# from flask_login import current_user, login_required, logout_user
 
 @app.route('/login', methods=["POST", "GET"])
 def login(): 
