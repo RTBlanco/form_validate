@@ -1,7 +1,10 @@
 from form_validate import app, db
 from flask import json, session, request, jsonify, Response
-from form_validate.models.user import User
+from form_validate.models.user import User, UserSchema
 from flask_cors import cross_origin
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
 
 @app.route('/login', methods=["POST", "GET"])
 def login(): 
@@ -34,7 +37,6 @@ def new():
 @app.route('/', methods=["GET"])
 def index():
   users = User.query.all()
-  
-  # TODO: user marshmello to steralize user objects
-  print(users)
-  return jsonify(dict(users))
+  result = users_schema.dump(users)
+  # return jsonify(result.data)
+  return jsonify(result)
