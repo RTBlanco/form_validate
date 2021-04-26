@@ -40,4 +40,4 @@ class User(db.Model):
 
 
   def __repr__(self):
-    return "User :{name: " + self.name + " username: " + self.username + ", password: " + self.password + "}" 
+    return 'User :{ name: "' + self.name + '", username: "' + self.username + '", password: "' + self.password + '"}' 

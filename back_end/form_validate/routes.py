@@ -31,3 +31,10 @@ def new():
     except AssertionError as error:
       return jsonify(error=f'{error}'), 400
 
+@app.route('/', methods=["GET"])
+def index():
+  users = User.query.all()
+  
+  # TODO: user marshmello to steralize user objects
+  print(users)
+  return jsonify(dict(users))
