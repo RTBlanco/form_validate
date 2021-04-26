@@ -1,5 +1,5 @@
 import json
-from form_validate import db
+from form_validate import db, ma
 
 class User(db.Model):
   id = db.Column(db.Integer, primary_key=True)
@@ -41,3 +41,12 @@ class User(db.Model):
 
   def __repr__(self):
     return 'User :{ name: "' + self.name + '", username: "' + self.username + '", password: "' + self.password + '"}' 
+
+
+
+class UserSchema(ma.Schema):
+  class meta:
+    fields = ("id", "username", "name")
+
+user_schema = UserSchema()
+users_schema = UserSchema(many=True)
