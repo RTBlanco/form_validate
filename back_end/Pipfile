@@ -11,6 +11,7 @@ flask-sqlalchemy = "*"
 flask-login = "*"
 flask-bcrypt = "*"
 flask-cors = "*"
+flask-marshmallow = "*"
 
 [requires]
 python_version = "3.8"
