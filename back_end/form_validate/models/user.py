@@ -44,9 +44,13 @@ class User(db.Model):
 
 
 
-class UserSchema(ma.Schema):
-  class meta:
-    fields = ("id", "username", "name")
+# class UserSchema(ma.Schema):
+#   class Meta:
+#     fields = ("id", "username", "name")
+class UserSchema(ma.SQLAlchemySchema):
+  class Meta:
+    model = User
 
-user_schema = UserSchema()
-users_schema = UserSchema(many=True)
+  id = ma.auto_field()
+  name = ma.auto_field()
+  username = ma.auto_field()
