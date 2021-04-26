@@ -1,3 +1,4 @@
+import json
 from form_validate import db
 
 class User(db.Model):
@@ -5,6 +6,9 @@ class User(db.Model):
   name = db.Column(db.String(80), unique=False, nullable=False)
   username = db.Column(db.String(80), unique=True, nullable=False)
   password = db.Column(db.String(120), unique=False, nullable=False)
+
+  def to_json(self):
+    return json.dumps(self, default=lambda o: o.__dict__, sort_keys=True, indent=4)
 
   @classmethod
   def find_by_username(self, username):
