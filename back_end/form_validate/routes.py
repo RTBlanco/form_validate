@@ -14,7 +14,7 @@ def login():
 
     user = User.find_by_username(username)
     if user != None and user.password == password:
-      return jsonify(id=user.id, username=user.username, name=user.name)
+      return jsonify(user_schema.dump(user))
     else:
       return jsonify({"error": "incorrect login"}), 401
 
@@ -30,7 +30,7 @@ def new():
       user = User(username=username, name=name, password=password)
       db.session.add(user)
       db.session.commit()
-      return jsonify(id=user.id, username=user.username, name=user.name)
+      return jsonify(user_schema.dump(user))
     except AssertionError as error:
       return jsonify(error=f'{error}'), 400
 
