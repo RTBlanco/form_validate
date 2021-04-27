@@ -34,9 +34,9 @@ def new():
     except AssertionError as error:
       return jsonify(error=f'{error}'), 400
 
+
 @app.route('/', methods=["GET"])
 def index():
   users = User.query.all()
   result = users_schema.dump(users)
-  # return jsonify(result.data)
   return jsonify(result)
