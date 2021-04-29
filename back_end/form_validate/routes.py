@@ -34,9 +34,14 @@ def new():
     except AssertionError as error:
       return jsonify(error=f"{error}"), 400
 
-@app.route("/edit/<int:id>")
+@app.route("/<int:id/edit>")
 def edit(id):
   pass
+
+@app.route('/<int:id>/delete')
+def delete(id):
+  pass
+
 
 @app.route('/', methods=["GET"])
 def index():
