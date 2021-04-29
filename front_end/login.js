@@ -90,6 +90,8 @@ function validateLogin(obj) {
       password.style.border = "1px solid red"
       password.value = ''
     }
+
+    shakeLogin()
   }
 }
 function shakeLogin(){

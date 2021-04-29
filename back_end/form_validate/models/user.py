@@ -17,7 +17,7 @@ class User(db.Model):
 
   @db.validates('username')
   def validate_username(self, key, username):
-    if not username or username == None or username == '':
+    if not username or username == None or username == "":
       raise AssertionError('No username provided')
 
     if User.query.filter(User.username == username).first():
@@ -27,15 +27,16 @@ class User(db.Model):
 
   @db.validates('password')
   def vaidate_password(self, key, password):
-    if not password or password == None or password == '':
+    if not password or password == None or password == "":
       raise AssertionError('No password provided')
 
     return password
 
   @db.validates('name')
   def vaidate_name(self, key, name):
-    if not name or name == None or name == '':
+    if not name or name == None or name == "":
       raise AssertionError('No name provided')
+
     return name 
 
 

@@ -32,7 +32,7 @@ def new():
       db.session.commit()
       return jsonify(user_schema.dump(user))
     except AssertionError as error:
-      return jsonify(error=f'{error}'), 400
+      return jsonify(error=f"{error}"), 400
 
 
 @app.route('/', methods=["GET"])
