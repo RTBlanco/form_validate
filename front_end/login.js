@@ -99,9 +99,6 @@ function shakeLogin(){
   formDiv.style.animation = 'shake 0.3s';
   setTimeout(()=> formDiv.style.animation = 'none',300)
 }
-function validateSignIn(obj) {
-
-}
 
 function look(username, password) {
   return fetch('http://localhost:5000/login',{
