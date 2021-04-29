@@ -3,7 +3,8 @@ document.addEventListener("DOMContentLoaded", ()=>{
   const username = document.getElementById("username")
   const password = document.getElementById("password")
   const name = document.getElementById('name')
-
+  
+  changeToSignUp();
   loginForm.addEventListener("submit", (e)=>{
     e.preventDefault();
     const sessionName = document.getElementById('session-name')
@@ -13,7 +14,6 @@ document.addEventListener("DOMContentLoaded", ()=>{
       create(username.value, name.value, password.value);
     }
   })
-  changeToSignUp();
 })
 
 function addNameInput(){
@@ -75,25 +75,25 @@ function validateLogin(obj) {
     location.href = "./index.html"
 
   } else {
-
-    if (username.value === '' && password.value === '') {
-      username.style.border = "1px solid red"
-      username.value = ''
-      password.style.border = "1px solid red"
-      password.value = ''
-
+    const inputName = document.getElementById('name')
+    if (username.value === '' && password.value === '' && inputName.value === '') {
+      [username, password, inputName].forEach((i)=>{showInvalid(i)})
     } else if (username.value === ''){
-      username.style.border = "1px solid red"
-      username.value = ''
-
+      showInvalid(username)
     } else if (password.value === ''){
-      password.style.border = "1px solid red"
-      password.value = ''
+      showInvalid(password)
+    } else if (inputName.value === ''){
+      showInvalid(inputName)
     }
-
     shakeLogin()
   }
 }
+
+function showInvalid(element){
+  element.style.border = "1px solid red"
+  element.value = ''
+}
+
 function shakeLogin(){
   const formDiv = document.getElementById("form");
   formDiv.style.animation = 'shake 0.3s';
