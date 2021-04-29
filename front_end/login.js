@@ -64,7 +64,7 @@ function changeToSignUp() {
 }
 
 function validateLogin(obj) {
-  // const formDiv = document.getElementById("form");
+  
   if (obj.status === 200){
     obj.json().then( obj => {
       const {id, username, name} = obj
@@ -73,6 +73,7 @@ function validateLogin(obj) {
       sessionStorage.setItem('name', name)
     })
     location.href = "./index.html"
+
   } else {
 
     if (username.value === '' && password.value === '') {
@@ -89,14 +90,6 @@ function validateLogin(obj) {
       password.style.border = "1px solid red"
       password.value = ''
     }
-
-
-    // username.value = ''
-    // password.value = ''
-    // username.style.border = "1px solid red"
-    // password.style.border = "1px solid red"
-    // formDiv.style.animation = 'shake 0.3s';
-    // setTimeout(()=> formDiv.style.animation = 'none',300)
   }
 }
 function shakeLogin(){
