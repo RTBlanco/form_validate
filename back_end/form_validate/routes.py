@@ -34,7 +34,7 @@ def new():
     except AssertionError as error:
       return jsonify(error=f"{error}"), 400
 
-@app.route("/<int:id/edit>")
+@app.route("/<int:id>/edit")
 def edit(id):
   name = dict(request.json)["name"]
   username = dict(request.json)["username"]
