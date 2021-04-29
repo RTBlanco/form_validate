@@ -36,6 +36,10 @@ def new():
 
 @app.route("/<int:id/edit>")
 def edit(id):
+  name = dict(request.json)["name"]
+  username = dict(request.json)["username"]
+  user = User.query.filter(User.id == id).all()
+  
   pass
 
 @app.route('/<int:id>/delete')
