@@ -64,7 +64,7 @@ function changeToSignUp() {
 }
 
 function validateLogin(obj) {
-  const formDiv = document.getElementById("form");
+  // const formDiv = document.getElementById("form");
   if (obj.status === 200){
     obj.json().then( obj => {
       const {id, username, name} = obj
@@ -74,15 +74,36 @@ function validateLogin(obj) {
     })
     location.href = "./index.html"
   } else {
-    username.value = ''
-    password.value = ''
-    username.style.border = "1px solid red"
-    password.style.border = "1px solid red"
-    formDiv.style.animation = 'shake 0.3s';
-    setTimeout(()=> formDiv.style.animation = 'none',300)
+
+    if (username.value === '' && password.value === '') {
+      username.style.border = "1px solid red"
+      username.value = ''
+      password.style.border = "1px solid red"
+      password.value = ''
+
+    } else if (username.value === ''){
+      username.style.border = "1px solid red"
+      username.value = ''
+
+    } else if (password.value === ''){
+      password.style.border = "1px solid red"
+      password.value = ''
+    }
+
+
+    // username.value = ''
+    // password.value = ''
+    // username.style.border = "1px solid red"
+    // password.style.border = "1px solid red"
+    // formDiv.style.animation = 'shake 0.3s';
+    // setTimeout(()=> formDiv.style.animation = 'none',300)
   }
 }
-
+function shakeLogin(){
+  const formDiv = document.getElementById("form");
+  formDiv.style.animation = 'shake 0.3s';
+  setTimeout(()=> formDiv.style.animation = 'none',300)
+}
 function validateSignIn(obj) {
 
 }
